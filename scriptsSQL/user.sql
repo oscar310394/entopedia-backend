@@ -1,0 +1,3 @@
+CREATE TABLE user(id INT AUTO_INCREMENT NOT NULL PRIMARY KEY, name VARCHAR(50) NOT NULL,firstSurname VARCHAR(50) NOT NULL, secondSurname VARCHAR(50),
+phoneNumber INT NOT NULL, email VARCHAR(50) NOT NULL, occupation VARCHAR(50) NOT NULL, password VARCHAR(50) NOT NULL, isAdmi boolean NOT NULL, active boolean NOT NULL);
+
