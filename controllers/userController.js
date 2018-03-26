@@ -31,9 +31,9 @@ exports.updateUser = (req, res) => {
 }
 
 exports.deleteUser = (req, res) => {
-    User.destroy({where:{id:req.params.id}}).then(()=>{
+    User.destroy({ where: { id: req.params.id } }).then(() => {
         res.status(200).json({
-            message:"is deleted"
+            message: "is deleted"
         });
     });
 }
