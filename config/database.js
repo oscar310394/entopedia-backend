@@ -1,10 +1,11 @@
-const mysql = require('mysql2');
+const Sequelize = require('sequelize');
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'ploi753',
-    database: 'entopedia'
+const sequelize = new Sequelize('entopedia', 'root', 'ploi753',{
+    host:'localhost',
+    dialect: 'mysql',
+    define:{
+        timestamps: false
+    }
 });
 
-module.exports = connection;
+module.exports = sequelize;
