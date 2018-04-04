@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 let userController = require('../controllers/userController');
+let userMiddleWare = require('../middlewares/userMiddleware');
 
 
 //Next is missing in all the router methods
