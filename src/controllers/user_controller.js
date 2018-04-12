@@ -35,9 +35,9 @@ exports.update = (req, res, next) => {
 }
 
 exports.delete = (req, res, next) => {
-    let user = req.body;
-    let sql = "UPDATE users SET active = ? WHERE id = ?";
-    db.query(sql, [user, req.params.id], (err, user) => {
+    //let user = req.body;
+    let sql = "UPDATE users SET is_active = 0 WHERE id = ?";
+    db.query(sql, req.params.id, (err, user) => {
         if (err) return next(err);
         res.json(user);
     });
