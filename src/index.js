@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 
 const userRoutes = require('./routes/user');
+const calendarRoures = require('./routes/calendar');
 
 //Settings
 app.set('port', process.env.PORT || 3000);
@@ -16,6 +17,7 @@ app.use(express.urlencoded({extended:false}));
 
 
 app.use('/entopedia',userRoutes);
+app.use('/entopedia',calendarRoures);
 
 
 app.listen(app.get('port'));
