@@ -12,9 +12,9 @@ router.post('/user', (req, res) => {
     db.query(sql, (err, user) => {
         if (err) return next(err);
         if (user.length < 1) return res.status(404).send('Not found.');
-        console.log(user);
+        //console.log(user);
         let token = jwt.sign({ user }, config.secret, { expiresIn: '2h' }, (err, token) => {
-            res.json({ token });
+            res.json({ token, user });
         });
     });
 });
