@@ -34,15 +34,13 @@ exports.update = (req, res, next) => {
     });
 }
 
-/*
-exports.delete = (req, res, next) => {
-    let user = req.body;
-    let sql = "UPDATE users SET active = ? WHERE id = ?";
-    db.query(sql, [user, req.params.id], (err, user) => {
-        if (err) return next(err);
-        res.json(user);
-    });
-}
-*/
+
+exports.delete = (req, res) => {
+    let sql = "DELETE FROM arthropods WHERE id = ?";
+    db.query(sql, [req.params.id],function (err,arthropod) {
+        if (err) throw err;
+      });
+        
+    }
 
 
