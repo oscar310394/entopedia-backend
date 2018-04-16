@@ -1,13 +1,14 @@
 const router = require('express').Router();
 const calendar_controller = require('../controllers/calendar_controller');
+const auth = require('../middlewares/auth');
 
 router.route('/calendar')
-    .get(calendar_controller.get)
-    .post(calendar_controller.save);
+    .get(auth.verifyToken, calendar_controller.get)
+    .post(auth.verifyToken, calendar_controller.save);
 
 router.route('/calendar/:id')
-    .get(calendar_controller.get_by_id)
-    .put(calendar_controller.update)
-    .delete(calendar_controller.delete);
+    .get(auth.verifyToken, calendar_controller.get_by_id)
+    .put(auth.verifyToken, calendar_controller.update)
+    .delete(auth.verifyToken, calendar_controller.delete);
 
 module.exports = router;

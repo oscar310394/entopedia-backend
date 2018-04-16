@@ -1,12 +1,13 @@
 const router = require('express').Router();
 const arthropod_controller = require('../controllers/arthropod_controller');
+const auth = require('../middlewares/auth');
 
 router.route('/arthropod')
     .get(arthropod_controller.get)
-    .post(arthropod_controller.save);
+    .post(auth.verifyToken, arthropod_controller.save);
 
 router.route('/arthropod/:id')
-    .get(arthropod_controller.get_by_id)
-    .put(arthropod_controller.update);
+    .get(auth.verifyToken, arthropod_controller.get_by_id)
+    .put(auth.verifyToken, arthropod_controller.update);
 
 module.exports = router;

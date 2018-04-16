@@ -1,4 +1,6 @@
 const db = require('../config/database').Connection;
+const jwt = require('jsonwebtoken');
+let config = require('../config/config');
 
 exports.get = (req, res, next) => {
     let sql = "SELECT * FROM users";
@@ -9,11 +11,17 @@ exports.get = (req, res, next) => {
 }
 
 exports.save = (req, res, next) => {
-    let user = req.body;
-    let sql = "INSERT INTO users SET ?";
-    db.query(sql, user, (err, user) => {
-        if (err) return next(err);
-        res.json(user);
+    jwt.verify(req.token, config.secret, (err, authData) => {
+        if (err) {
+            res.sendStatus(403);
+        } else {
+            let user = req.body;
+            let sql = "INSERT INTO users SET ?";
+            db.query(sql, user, (err, user) => {
+                if (err) return next(err);
+                res.json({ user, authData });
+            });
+        }
     });
 }
 
