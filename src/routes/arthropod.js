@@ -10,4 +10,8 @@ router.route('/arthropod/:id')
     .get(auth.verifyToken, arthropod_controller.get_by_id)
     .put(auth.verifyToken, arthropod_controller.update);
 
+    
+router.route('/arthropod/search/:word')
+.get(arthropod_controller.getSearch);
+
 module.exports = router;

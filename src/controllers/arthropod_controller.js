@@ -8,6 +8,15 @@ exports.get = (req, res, next) => {
     });
 }
 
+exports.getSearch = (req, res, next) => {
+ 
+    let sql = "SELECT * FROM arthropods WHERE common_name = ? || order_subphylum = ? || order_subphylum = ? || subphylum = ? || body_size = ?;";
+    db.query(sql,[req.params.word,req.params.word,req.params.word,req.params.word,req.params.word], (err, arthropods) => {
+        if (err) return next(err);
+        res.json(arthropods);
+    });
+}
+
 exports.save = (req, res, next) => {
     let arthropod = req.body;
     let sql = "INSERT INTO arthropods SET ?";
