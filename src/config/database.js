@@ -3,7 +3,7 @@ const mysql = require('mysql2');
 exports.Connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "12345",
+    password: "ploi753",
     database: "entopedia"
 });
 

@@ -2,7 +2,6 @@ const router = require('express').Router();
 const db = require('../config/database').Connection;
 const auth = require('../middlewares/auth');
 
-
 let jwt = require('jsonwebtoken');
 let bcrypt = require('bcryptjs');
 let config = require('../config/config');
