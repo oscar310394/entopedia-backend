@@ -14,4 +14,7 @@ router.route('/arthropod/:id')
 router.route('/arthropod/search/:word')
 .get(arthropod_controller.getSearch);
 
+router.route('/arthropod/advace/:word')
+.get(arthropod_controller.getAdvance);
+
 module.exports = router;

@@ -17,6 +17,16 @@ exports.getSearch = (req, res, next) => {
     });
 }
 
+exports.getAdvance = (req, res, next) => {
+ 
+    let sql = "SELECT users.name,users.email,arthropods.subphylum, arthropods.order_subphylum, arthropods.scientific_name,arthropods.common_name,arthropods.insert_date "+
+    "FROM arthropods INNER JOIN users ON arthropods.user_id=users.id WHERE subphylum =  ?;";
+    db.query(sql,req.params.word, (err, arthropods) => {
+        if (err) return next(err);
+        res.json(arthropods);
+    });
+}
+
 exports.save = (req, res, next) => {
     let arthropod = req.body;
     let sql = "INSERT INTO arthropods SET ?";
