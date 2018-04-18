@@ -11,18 +11,15 @@ exports.get = (req, res, next) => {
 }
 
 exports.save = (req, res, next) => {
-    jwt.verify(req.token, config.secret, (err, authData) => {
-        if (err) {
-            res.sendStatus(403);
-        } else {
-            let user = req.body;
-            let sql = "INSERT INTO users SET ?";
-            db.query(sql, user, (err, user) => {
-                if (err) return next(err);
-                res.json({ user, authData });
-            });
-        }
+
+    let user = req.body;
+    let sql = "INSERT INTO users SET ?";
+    db.query(sql, user, (err, user) => {
+        if (err) return next(err);
+        res.json(user);
     });
+
+
 }
 
 exports.get_by_id = (req, res, next) => {
