@@ -23,6 +23,7 @@ exports.save = (req, res, next) => {
     db.query(sql, arthropod, (err, arthropod) => {
         if (err) return next(err);
         res.json(arthropod);
+        console.log(arthropod);
     });
 }
 
